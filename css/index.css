@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#shortenerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    margin: auto;
+}
+
+#shortenerForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    width: 70%;
+}
+
+#shortenerForm div button{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    font-family: sans-serif;
+    background-color: rgb(82, 82, 246);
+    border-radius: 10px;
+    color: white;
+    border: 0;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+#shortenerForm div input{
+    width: 100%;
+    height: 50px;
+    border: 2px solid rgb(82, 82, 246);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#shortenerForm h1{
+    font-family: sans-serif;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(67, 67, 67);
+    margin-bottom: 30px;
+}
+
+#link{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+#incorrect_url{
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 400px;
+    text-align: center;
+    padding: 5px;
+    font-family: sans-serif;
+    color: red;
+}

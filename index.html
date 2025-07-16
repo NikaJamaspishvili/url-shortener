@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/index.css">
+  <title>URL Shortener</title>
+</head>
+<body>
+  <form id="shortenerForm">
+    <h1>Insert The Url Just As Example Shows</h1>
+    <div>
+      <input type="text" name="long_url" placeholder="Example: https://facebook.com/..." required>
+      <button type="submit">Submit</button>
+    </div>
+    <section id="result">
+    </section>
+  </form>
+
+  <script>
+    document.getElementById("shortenerForm").addEventListener("submit", async function(e) {
+      e.preventDefault(); // ✅ prevent page reload
+
+      let formData = new FormData(this);
+
+      let response = await fetch("php_scripts/process.php", {
+        method: "POST",
+        body: formData
+      });
+
+      let shortUrl = await response.text();
+      console.log(shortUrl);
+      if(shortUrl === "incorrect url!"){
+        document.getElementById("result").innerHTML = `<p id="incorrect_url">Please Insert The Correct Formatted Url!</p>`;
+      }else{
+        document.getElementById("result").innerHTML = `<p id="link">✅ Short URL: <a href="${shortUrl}" target="_blank">${shortUrl}</a></P>`;
+      }
+
+      this.reset(); // ✅ clear the form automatically
+    });
+  </script>
+</body>
+</html>
