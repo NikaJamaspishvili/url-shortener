@@ -9,8 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['long_url'])) {
         exit();
     }
     $random_number = rand();
-    $short_url = "http://localhost/php_projects/url_shortener/php_scripts/redirect.php?id=$random_number";
-
+    $short_url = $_ENV['BASE_URL'] . $random_number;
     try {
         $sql = "INSERT INTO urls (shortUrl, longUrl) VALUES ('$random_number', '$long_url')";
         mysqli_query($conn, $sql);

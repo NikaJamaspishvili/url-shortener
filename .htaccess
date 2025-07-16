@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Rewrite /123456789 into /php_scripts/redirect.php?id=123456789
+RewriteRule ^([0-9a-zA-Z]+)$ php_scripts/redirect.php?id=$1 [L]
