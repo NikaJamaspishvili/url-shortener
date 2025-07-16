@@ -4,8 +4,7 @@ include('database.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['long_url'])) {
     $long_url = $_POST['long_url'];
     if(!filter_var($long_url, FILTER_VALIDATE_URL)){
-       // die('Url is incorrect!');
-        echo "incorrect url!";
+        echo json_encode(["messaage"=>"incorrect url!","status"=>0]);
         mysqli_close($conn);
         exit();
     }
@@ -15,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['long_url'])) {
     try {
         $sql = "INSERT INTO urls (shortUrl, longUrl) VALUES ('$random_number', '$long_url')";
         mysqli_query($conn, $sql);
-        echo $short_url; // ✅ Return the short URL directly to JS
+        echo json_encode(["message"=>$short_url,"status"=>1]); // ✅ Return the short URL directly to JS
     } catch (mysqli_sql_exception $e) {
         die("Error: " . $e->getMessage());
     }
